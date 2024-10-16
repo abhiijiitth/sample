@@ -1,0 +1,26 @@
+class ElectricityBill:
+    def __init__(self, units_consumed):
+        self.units_consumed = units_consumed
+        self.bill_amount = 0
+
+    def calculate_bill(self):
+        if self.units_consumed <= 100:
+            self.bill_amount = self.units_consumed * 5
+        elif self.units_consumed <= 200:
+            self.bill_amount = (100 * 5) + ((self.units_consumed - 100) * 10)
+        elif self.units_consumed <= 300:
+            self.bill_amount = (100 * 5) + (100 * 10) + ((self.units_consumed - 200) * 15)
+        elif self.units_consumed <= 400:
+            self.bill_amount = (100 * 5) + (100 * 10) + (100 * 15) + ((self.units_consumed - 300) * 20)
+        else:
+            self.bill_amount = (100 * 5) + (100 * 10) + (100 * 15) + (100 * 20) + ((self.units_consumed - 400) * 25)
+
+    def display_bill(self):
+        print(f"Units Consumed: {self.units_consumed}")
+        print(f"Total Bill Amount: Rs. {self.bill_amount:.2f}")
+
+
+units = int(input("Enter the units consumed: "))
+bill = ElectricityBill(units)
+bill.calculate_bill()
+bill.display_bill()
